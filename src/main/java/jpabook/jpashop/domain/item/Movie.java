@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-@DiscriminatorValue("M")
+@DiscriminatorValue("M") //@DiscriminatorColumn(name = "dtype")
 public class Movie extends Item {
     private String director;
     private String actor;
