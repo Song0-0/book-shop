@@ -1,16 +1,17 @@
 package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository //@ComponentScan의 대상이 되어서 스프링 빈으로 등록이 된다.
+@RequiredArgsConstructor
 public class MemberRepository {
-    @PersistenceContext //스프링에 의해서 엔티티 매니저를 주입받는다.
-    private EntityManager em;
+    //    @PersistenceContext //스프링에 의해서 엔티티 매니저를 주입받는다.
+    private final EntityManager em;
 
     public void save(Member member) {
         em.persist(member);
