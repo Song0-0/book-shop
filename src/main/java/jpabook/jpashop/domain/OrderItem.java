@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import static javax.persistence.FetchType.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
     @Id
     @GeneratedValue
@@ -27,6 +30,10 @@ public class OrderItem {
 
     private int orderPrice;//주문가격
     private int count; // 주문수량
+
+//상단 어노테이션으로 대체
+//    protected OrderItem() {
+//    }
 
     //생성 메서드. createOrder할 때 매개변수로 사용한 것이니 생성 메서드를 만들어준다.
     //얼마에 몇개 샀다는 것
