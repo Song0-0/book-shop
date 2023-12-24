@@ -28,6 +28,31 @@ public class OrderItem {
     private int orderPrice;//주문가격
     private int count; // 주문수량
 
+    //생성 메서드. createOrder할 때 매개변수로 사용한 것이니 생성 메서드를 만들어준다.
+    //얼마에 몇개 샀다는 것
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
 
+        item.removeStock(count);
+        return orderItem;
+    }
 
+    //비즈니스 로직
+    //아이템의 재고를 주문수량만큼 다시 늘려야한다.
+    public void cancel() {
+        getItem().addStock(count);
+    }
+
+    //조회 로직
+
+    /**
+     * 주문 상품 전체 가격 조회
+     * @return
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
 }
